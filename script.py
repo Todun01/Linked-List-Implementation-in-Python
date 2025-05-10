@@ -67,6 +67,18 @@ class LinkedList:
                 itr.next = Node(data, itr.next)
             count += 1
             itr = itr.next
+    def insert_after_value(self, data, new_data):
+        itr = self.head
+        exists = False
+        while itr:
+            if itr.data == data:
+                itr.next = Node(new_data, itr.next)
+                exists = True
+            itr = itr.next
+        if not exists:
+            raise Exception("Data not found")
+    def remove_by_value(self, data):
+        pass
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insert_values([5, 3, 19, 26, 900])
@@ -74,4 +86,6 @@ if __name__ == '__main__':
     ll.remove_at(2)
     ll.print()
     ll.insert_at(2, 300)
+    ll.print()
+    ll.insert_after_value(500, 725)
     ll.print()
