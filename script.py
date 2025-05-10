@@ -77,8 +77,23 @@ class LinkedList:
             itr = itr.next
         if not exists:
             raise Exception("Data not found")
+
     def remove_by_value(self, data):
-        pass
+        itr = self.head
+        exists = False
+        count = 0
+        while itr:
+            if self.head.data == data:
+                self.head = itr.next
+                exists = True
+                break
+            if itr.next.data == data:
+                exists = True
+                itr.next = itr.next.next
+                break
+            itr = itr.next
+        if not exists:
+            raise Exception("Data not found")
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insert_values([5, 3, 19, 26, 900])
@@ -87,5 +102,7 @@ if __name__ == '__main__':
     ll.print()
     ll.insert_at(2, 300)
     ll.print()
-    ll.insert_after_value(500, 725)
+    ll.insert_after_value(300, 725)
+    ll.print()
+    ll.remove_by_value(26)
     ll.print()
